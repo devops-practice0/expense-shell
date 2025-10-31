@@ -40,8 +40,17 @@ VALIDATE $? "Installing Nginx Server"
 systemctl enable nginx &>>$LOG_FILE_NAME
 VALIDATE $? "Enabling Nginx server"
 
+# Ensure nginx.conf exists
+if [ ! -f /etc/nginx/nginx.conf ]; then
+    echo "Restoring default nginx.conf ..." &>>$LOG_FILE_NAME
+    mkdir -p /etc/nginx
+    cp /usr/share/nginx/nginx.conf.default /etc/nginx/nginx.conf
+    VALIDATE $? "Restored default nginx.conf"
+fi
+
 systemctl start nginx &>>$LOG_FILE_NAME
 VALIDATE $? "Starting Nginx Server"
+
 
 
 rm -rf /usr/share/nginx/html/* &>>$LOG_FILE_NAME
