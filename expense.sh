@@ -1,10 +1,10 @@
 #!/bin/bash
 
-AMI_ID = "ami-09c813fb71547fc4f"
-SIG_ID = "sg-001be709e1da4d425"
+AMI_ID= "ami-09c813fb71547fc4f"
+SIG_ID= "sg-001be709e1da4d425"
 INSTANCES=("frontend" "backend" "mysql")
-ZONE_ID = "Z08582171LSVRX0KSY8ZP"
-DOMAIN_NAME = "sree84s.site"
+ZONE_ID= "Z08582171LSVRX0KSY8ZP"
+DOMAIN_NAME= "sree84s.site"
 
 for instance in $@
 do 
